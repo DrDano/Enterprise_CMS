@@ -12,7 +12,7 @@
 <div class="subject show">
     <?php echo "Subject ID: " . h($id); ?>
 </div>
-    </br><a href='../pages/'>&laquo; Back to List</a>
+    </br><a href='../subjects/'>&laquo; Back to List</a>
 </div>
 
 <?php include(SHARED_PATH . '/staff_footer.php'); ?>

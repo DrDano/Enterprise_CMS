@@ -11,7 +11,6 @@
     ?>
     <div class="page show">
         <?php echo "Page ID: " . h($id); ?>
-        <?php echo phpinfo(); ?>
     </div>
     </br><a href='../pages/'>&laquo; Back to List</a>
 </div>
