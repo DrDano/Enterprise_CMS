@@ -12,7 +12,7 @@ if($test == '404') {
 }
 ?>
 
-<?php $page_title = 'Create Subject'; ?>
+<?php $subject_title = 'Create Subject'; ?>
 <?php include(SHARED_PATH . '/staff_header.php'); ?>
 
 <div id="content">

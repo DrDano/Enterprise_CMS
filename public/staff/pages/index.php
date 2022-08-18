@@ -14,6 +14,9 @@
 <?php include(SHARED_PATH . '/staff_header.php'); ?>
 
    <div id="content">
+    <div class="actions">
+      <a class="action" href="<?php echo url_for('/staff/pages/new.php'); ?>">Create New Page</a>
+    </div>
       <div>
         <table class="list">
         <tr>
