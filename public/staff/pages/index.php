@@ -36,7 +36,7 @@
             <td><?php echo h($page['visible']) == 1 ? 'true' : 'false'; ?></td>
             <td><?php echo h($page['page']); ?></td>
             <td><a class="action" href="<?php echo url_for("/staff/pages/show.php?id=" . h(u($page['id'])) . "&page=" . h(u($page['page']))); ?>">View</a></td>
-            <td><a class="action" href="">Edit</a></td>
+            <td><a class="action" href="<?php echo url_for("/staff/pages/edit.php?id=" . h(u($page['id'])) . "&page=" . h(u($page['page']))); ?>">Edit</a></td>
             <td><a class="action" href="">Delete</a></td>
             </tr>
         <?php } ?>

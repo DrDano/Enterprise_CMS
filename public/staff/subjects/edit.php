@@ -38,7 +38,7 @@ $page_title = "Edit $subject_title";
   <a class="back-link" href="<?php echo url_for('/staff/subjects/index.php'); ?>">&laquo; Back to List</a>
 
   <div class="subject edit">
-    <h1>Edit Subject</h1>
+    <h1><?php echo $page_title ?> Subject</h1>
 
     <form action="<?php echo url_for('/staff/subjects/edit.php?id=' . h(u($id))); ?>" method="post">
       <dl>
@@ -49,7 +49,7 @@ $page_title = "Edit $subject_title";
         <dt>Position</dt>
         <dd>
           <select name="position">
-            <option value="1">1</option>
+            <option value="1" <?php if($position == "1") { echo " selected";}; ?>>1</option>
           </select>
         </dd>
       </dl>
@@ -57,7 +57,7 @@ $page_title = "Edit $subject_title";
         <dt>Visible</dt>
         <dd>
           <input type="hidden" name="visible" value="0" />
-          <input type="checkbox" name="visible" value="1" />
+          <input type="checkbox" name="visible" value="1" <?php if($visible == "1") { echo " checked";}; ?>/>
         </dd>
       </dl>
       <div id="operations">
