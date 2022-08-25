@@ -8,9 +8,11 @@
     $subject = find_subject_by_id($id);
 
     $page_title = $subject_title;
-    include(SHARED_PATH . '/staff_header.php');
 
     ?>
+    <div>
+        <?php include(SHARED_PATH . '/staff_header.php'); ?>
+    </div>
     <div class="subject show">
         <?php echo "Subject ID: " . h($id); ?>
     </div>
