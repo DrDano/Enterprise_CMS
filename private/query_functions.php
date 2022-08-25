@@ -71,3 +71,22 @@
           exit;
         }
     }
+
+    function delete_subject($id) {
+        global $db;
+        $sql = "DELETE FROM subjects ";
+        $sql .= "WHERE id='" . $id . "'";
+        $sql .= "LIMIT 1";
+
+        // $result = true/false
+        $result = mysqli_query($db, $sql);
+
+        if($result) {
+            return true;
+        } else {
+            // DELETE failed
+            echo mysqli_error($db);
+            db_disconnect($db);
+            exit;
+        }
+    }
