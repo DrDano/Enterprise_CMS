@@ -146,3 +146,22 @@
             exit;
         }
     }
+
+    function delete_page($id) {
+        global $db;
+        $sql = "DELETE FROM pages ";
+        $sql .= "WHERE id='" . $id . "'";
+        $sql .= "LIMIT 1";
+
+        // $result = true/false
+        $result = mysqli_query($db, $sql);
+
+        if($result) {
+            return true;
+        } else {
+            // DELETE failed
+            echo mysqli_error($db);
+            db_disconnect($db);
+            exit;
+        }
+    }

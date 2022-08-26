@@ -33,7 +33,7 @@
             <td><?php echo h($page['menu_name']); ?></td>
             <td><a class="action" href="<?php echo url_for("/staff/pages/show.php?id=" . h(u($page['id'])) . "&page=" . h(u($page['menu_name']))); ?>">View</a></td>
             <td><a class="action" href="<?php echo url_for("/staff/pages/edit.php?id=" . h(u($page['id'])) . "&page=" . h(u($page['menu_name']))); ?>">Edit</a></td>
-            <td><a class="action" href="">Delete</a></td>
+            <td><a class="action" href="<?php echo url_for("/staff/pages/delete.php?id=" . h(u($page['id'])) . "&page=" . h(u($page['menu_name']))); ?>">Delete</a></td>
             </tr>
         <?php } ?>
         </table>
