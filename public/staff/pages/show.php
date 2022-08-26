@@ -34,6 +34,10 @@
                 <dt>Visible</dt>
                 <dd><?php echo $page['visible'] == '1' ? 'true' : 'false'; ?></dd>
             </dl>
+            <dl>
+                <dt>Content</dt>
+                <dd><?php echo $page['content']; ?></dd>
+            </dl>
         </div>
     </div>
 </div>

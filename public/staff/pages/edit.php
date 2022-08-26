@@ -19,6 +19,7 @@ if(is_post_request()) {
   $page['menu_name'] = $_POST['menu_name'] ?? '';
   $page['position'] = $_POST['position'] ?? '';
   $page['visible'] = $_POST['visible'] ?? '';
+  $page['content'] = $_POST['content'] ?? '';
 
   $result = update_page($page);
   redirect_to(url_for('/staff/pages/show.php?id=' . $id));
@@ -87,6 +88,12 @@ $page_title = "Edit $page_title";
         <dd>
           <input type="hidden" name="visible" value="0" />
           <input type="checkbox" name="visible" value="1" <?php if($page['visible'] == "1") { echo " checked";}; ?>/>
+        </dd>
+      </dl>
+      <dl>
+        <dt>Content</dt>
+        <dd>
+          <textarea type="text" name="content"><?= $page['content'] ?></textarea>
         </dd>
       </dl>
       <div id="operations">

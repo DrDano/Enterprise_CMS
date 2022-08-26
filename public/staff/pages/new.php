@@ -23,6 +23,7 @@ if(is_post_request()) {
   $page['menu_name'] = $_POST['menu_name'] ?? '';
   $page['position'] = $_POST['position'] ?? '';
   $page['visible'] = $_POST['visible'] ?? '';
+  $page['content'] = $_POST['content'] ?? '';
 
   $result = insert_page($page);
   $new_id = mysqli_insert_id($db);
@@ -83,6 +84,12 @@ if(is_post_request()) {
         <dd>
           <input type="hidden" name="visible" value="0" />
           <input type="checkbox" name="visible" value="1" />
+        </dd>
+      </dl>
+      <dl>
+        <dt>Content</dt>
+        <dd>
+          <textarea type="text" name="content" value="" placeholder="Page content goes here"></textarea>
         </dd>
       </dl>
       <div id="operations">

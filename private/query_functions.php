@@ -66,12 +66,13 @@
     function insert_page($page) {
         global $db;
         $sql = "INSERT INTO pages ";
-        $sql .= "(subject_id, menu_name, position, visible) ";
+        $sql .= "(subject_id, menu_name, position, visible, content) ";
         $sql .= "VALUES (";
         $sql .= "'" . $page['subject_id'] . "',";
         $sql .= "'" . $page['menu_name'] . "',";
         $sql .= "'" . $page['position'] . "',";
-        $sql .= "'" . $page['visible'] . "'";
+        $sql .= "'" . $page['visible'] . "',";
+        $sql .= "'" . $page['content'] . "'";
         $sql .= ")";
         $result = mysqli_query($db, $sql);
         // For INSERT statements, $result is true/false
@@ -112,7 +113,8 @@
         $sql .= "subject_id='" . $page['subject_id'] ."',";
         $sql .= "menu_name='" . $page['menu_name'] ."',";
         $sql .= "position='" . $page['position'] ."',";
-        $sql .= "visible='" . $page['visible'] ."' ";
+        $sql .= "visible='" . $page['visible'] ."',";
+        $sql .= "content='" . $page['content'] ."' ";
         $sql .= "WHERE id='" . $page['id'] . "' ";
         $sql .= "LIMIT 1";
       
