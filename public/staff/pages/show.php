@@ -23,6 +23,10 @@
 
         <div class="attributes">
             <dl>
+                <dt>Subject</dt>
+                <dd><?php echo h(find_subject_by_id($page['subject_id'])['menu_name']); ?></dd>
+            </dl>
+            <dl>
                 <dt>Menu Name</dt>
                 <dd><?php echo h($page['menu_name']); ?></dd>
             </dl>
