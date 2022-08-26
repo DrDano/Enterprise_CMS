@@ -5,24 +5,30 @@ if(!isset($_GET['id'])) {
   redirect_to(url_for('/staff/pages/index.php'));
 }
 $id = $_GET['id'];
-$menu_name = '';
-$position = '';
-$visible = '';
+$page = find_page_by_id($id);
+$page_set = find_all_pages();
+$page_count = mysqli_num_rows($page_set);
+mysqli_free_result($page_set);
 
 if(is_post_request()) { 
 
   // Handle form values sent by edit.php
+  $page = [];
+  $page['id'] = $id;
+  $page['subject_id'] = $_POST['subject_id'] ?? 1;
+  $page['menu_name'] = $_POST['menu_name'] ?? '';
+  $page['position'] = $_POST['position'] ?? '';
+  $page['visible'] = $_POST['visible'] ?? '';
 
-  $menu_name = $_POST['menu_name'] ?? '';
-  $position = $_POST['position'] ?? '';
-  $visible = $_POST['visible'] ?? '';
-
-  echo "Form parameters<br />";
-  echo "Menu name: " . $menu_name . "<br />";
-  echo "Position: " . $position . "<br />";
-  echo "Visible: " . $visible . "<br />";
+  $result = update_page($page);
+  redirect_to(url_for('/staff/pages/show.php?id=' . $id));
 
 }
+?>
+
+<?php 
+  $subject_set = find_all_subjects();
+  $subject_count = mysqli_num_rows($subject_set);
 ?>
 
 <?php 
@@ -43,21 +49,44 @@ $page_title = "Edit $page_title";
     <form action="<?php echo url_for('/staff/pages/edit.php?id=' . h(u($id))); ?>" method="post">
       <dl>
         <dt>Menu Name</dt>
-        <dd><input type="text" name="menu_name" value="<?php echo $menu_name; ?>" /></dd>
+        <dd><input type="text" name="menu_name" value="<?php echo $page['menu_name']; ?>" /></dd>
       </dl>
       <dl>
         <dt>Position</dt>
         <dd>
           <select name="position">
-            <option value="1" <?php if($position == "1") { echo " selected";}; ?>>1</option>
+          <?php
+            for ($i=1; $i < $page_count; $i++) { 
+              echo "<option value=\"{$i}\"";
+              if($page["position"] == $i) {
+                echo " selected";
+              }
+              echo ">{$i}</option>";
+            }
+          ?>
           </select>
         </dd>
       </dl>
       <dl>
+        <dt>Parent Subject</dt>
+        <dd>
+          <select name="subject_id">
+          <?php
+            while($subject = mysqli_fetch_assoc($subject_set)) {
+              echo "<option value=\"{$subject['id']}\"";
+              if($page['subject_id'] == $subject['id']) {
+                echo " selected";
+              }
+              echo ">{$subject['menu_name']}</option>";
+            };
+          ?>
+          </select>
+        </dd>
+      </dl>
         <dt>Visible</dt>
         <dd>
           <input type="hidden" name="visible" value="0" />
-          <input type="checkbox" name="visible" value="1" <?php if($visible == "1") { echo " checked";}; ?>/>
+          <input type="checkbox" name="visible" value="1" <?php if($page['visible'] == "1") { echo " checked";}; ?>/>
         </dd>
       </dl>
       <div id="operations">
@@ -70,3 +99,4 @@ $page_title = "Edit $page_title";
 </div>
 
 <?php include(SHARED_PATH . '/staff_footer.php'); ?>
+<?php mysqli_free_result($subject_set); ?>
