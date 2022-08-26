@@ -30,6 +30,18 @@
         return $subject; // returns an assoc array
     }
 
+    function find_page_by_id($id) {
+        global $db;
+
+        $sql = "SELECT * FROM pages ";
+        $sql .= "WHERE id='" . $id . "'";
+        $result = mysqli_query($db, $sql);
+        confirm_result_set($result);
+        $page = mysqli_fetch_assoc($result);
+        mysqli_free_result($result);
+        return $page; // returns an assoc array
+    }
+
     function insert_subject($subject) {
         global $db;
         $sql = "INSERT INTO subjects ";
@@ -38,6 +50,28 @@
         $sql .= "'" . $subject['menu_name'] . "',";
         $sql .= "'" . $subject['position'] . "',";
         $sql .= "'" . $subject['visible'] . "'";
+        $sql .= ")";
+        $result = mysqli_query($db, $sql);
+        // For INSERT statements, $result is true/false
+
+        if($result) {
+            return true;
+        } else {
+            echo mysqli_error($db);
+            db_disconnect($db);
+            exit;
+        }
+    }
+
+    function insert_page($page) {
+        global $db;
+        $sql = "INSERT INTO pages ";
+        $sql .= "(subject_id, menu_name, position, visible) ";
+        $sql .= "VALUES (";
+        $sql .= "'" . $page['subject_id'] . "',";
+        $sql .= "'" . $page['menu_name'] . "',";
+        $sql .= "'" . $page['position'] . "',";
+        $sql .= "'" . $page['visible'] . "'";
         $sql .= ")";
         $result = mysqli_query($db, $sql);
         // For INSERT statements, $result is true/false

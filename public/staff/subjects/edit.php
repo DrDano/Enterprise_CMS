@@ -12,7 +12,7 @@ mysqli_free_result($subject_set);
 
 if(is_post_request()) { 
 
-  // Handle form values sent by new.php
+  // Handle form values sent by edit.php
   $subject = [];
   $subject['id'] = $id;
   $subject['menu_name'] = $_POST['menu_name'] ?? '';
