@@ -20,8 +20,13 @@ if(is_post_request()) {
   $subject['visible'] = $_POST['visible'] ?? '';
 
   $result = insert_subject($subject);
-  $new_id = mysqli_insert_id($db);
-  redirect_to(url_for('/staff/subjects/show.php?id=' . $new_id));
+  if ($result === true) {
+    $new_id = mysqli_insert_id($db);
+    redirect_to(url_for('/staff/subjects/show.php?id=' . $new_id));
+  } else {
+    $errors = $result;
+  }
+  
 }
 
 ?>
@@ -35,6 +40,8 @@ if(is_post_request()) {
 
   <div class="subject new">
     <h1>Create Subject</h1>
+
+    <?= display_errors($errors); ?>
 
     <form action="<?php echo url_for('/staff/subjects/new.php'); ?>" method="post">
       <dl>

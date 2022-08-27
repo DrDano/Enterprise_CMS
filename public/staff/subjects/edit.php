@@ -20,7 +20,12 @@ if(is_post_request()) {
   $subject['visible'] = $_POST['visible'] ?? '';
 
   $result = update_subject($subject);
-  redirect_to(url_for('/staff/subjects/show.php?id=' . $id));
+  if ($result === true) {
+    redirect_to(url_for('/staff/subjects/show.php?id=' . $id));
+  } else {
+    $errors = $result;
+    
+  }
 }
 ?>
 
@@ -38,6 +43,8 @@ $page_title = "Edit $subject_title";
 
   <div class="subject edit">
     <h1><?php echo $page_title ?> Subject</h1>
+
+    <?= display_errors($errors); ?>
 
     <form action="<?php echo url_for('/staff/subjects/edit.php?id=' . h(u($id))); ?>" method="post">
       <dl>
