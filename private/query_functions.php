@@ -74,6 +74,55 @@
         return $page; // returns an assoc array
     }
 
+    function validate_page($page) {
+        $page_set = find_all_pages();
+        $errors = [];
+
+        // subject_id
+        if (is_blank($page['subject_id'])) {
+            $errors[] = "Must provide a parent subject.";
+        }
+        
+        // menu_name
+        if(is_blank($page['menu_name'])) {
+          $errors[] = "Name cannot be blank.";
+        }
+        if(!has_length($page['menu_name'], ['min' => 2, 'max' => 255])) {
+          $errors[] = "Name must be between 2 and 255 characters.";
+        }
+        $current_id = $page['id'] ?? '0';
+        if(!has_unique_page_menu_name($page['menu_name'], $current_id)) {
+          $errors[] = "Menu name must be unique";
+        }
+      
+        // position
+        // Make sure we are working with an integer
+        $position_int = (int) $page['position'];
+        if($position_int <= 0) {
+          $errors[] = "Position must be greater than zero.";
+        }
+        if($position_int > 999) {
+          $errors[] = "Position must be less than 999.";
+        }
+      
+        // visible
+        // Make sure we are working with a string
+        $visible_str = (string) $page['visible'];
+        if(!has_inclusion_of($visible_str, ["0","1"])) {
+          $errors[] = "Visible must be true or false.";
+        }
+
+        // content
+        if(is_blank($page['content'])) {
+            $errors[] = "Cannot leave content blank.";
+          }
+        if(!has_length($page['content'], ['min' => 2, 'max' => 65000])) {
+            $errors[] = "Content must be at least 2 characters.";
+        }
+      
+        return $errors;
+    }
+
     function insert_subject($subject) {
         global $db;
 
@@ -103,6 +152,12 @@
 
     function insert_page($page) {
         global $db;
+
+        $errors = validate_page($page);
+        if (!empty($errors)) {
+            return $errors;
+        }
+
         $sql = "INSERT INTO pages ";
         $sql .= "(subject_id, menu_name, position, visible, content) ";
         $sql .= "VALUES (";
@@ -153,6 +208,12 @@
 
     function update_page($page) {
         global $db;
+
+        $errors = validate_page($page);
+        if (!empty($errors)) {
+            return $errors;
+        }
+
         $sql = "UPDATE pages SET ";
         $sql .= "subject_id='" . $page['subject_id'] ."',";
         $sql .= "menu_name='" . $page['menu_name'] ."',";

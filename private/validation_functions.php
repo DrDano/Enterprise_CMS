@@ -39,6 +39,29 @@
         return in_array($value, $set);
     }
 
+    function exists_in_2d_array($value, $array_set, $ignore = '') {
+        while ($page = mysqli_fetch_assoc($array_set)) {
+            if ($page['menu_name'] === $value && !$page['menu_name'] === $ignore) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    function has_unique_page_menu_name($menu_name, $current_id="0") {
+        global $db;
+
+        $sql = "SELECT * FROM pages ";
+        $sql .= "WHERE menu_name='" . $menu_name . "' ";
+        $sql .= "AND id != '" . $current_id . "'";
+        
+        $page_set = mysqli_query($db, $sql);
+        $page_count = mysqli_num_rows($page_set);
+        mysqli_free_result($page_set);
+
+        return $page_count === 0;
+    }
+
     function has_string($value, $required_string) {
         return strpos($value, $required_string) !== false;
     }
