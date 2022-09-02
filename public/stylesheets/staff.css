@@ -4,15 +4,15 @@ html {
 }
 
 body {
-  height: 980px;
+  height: 100%;
   width: 100%;
   margin: 0;
   padding: 0;
 }
 
 header {
-  width: 980px;
-  height: 40px;
+  width: 100%;
+  height:fit-content;
   margin: 0 0 10px 0;
   padding: 0;
   background: #0055DD;
@@ -47,14 +47,14 @@ navigation ul li {
 }
 
 #content {
-  width: 920px;
-  min-height: 500px;
+  width: 100vw;
+  height: 100%;
   padding: 0 30px;
 }
 
 footer {
-  width: 940px;
-  height: 20px;
+  width: 100%;
+  height: fit-content;
   margin: 0 0 10px 0;
   padding: 10px 20px;
   background: #0055DD;
@@ -75,7 +75,7 @@ table {
   vertical-align: top;
 }
 
-table.list {
+/* table.list {
   width: 100%;
 }
 
@@ -88,7 +88,7 @@ table.list tr th {
   background: #0055DD;
   color: white;
   text-align: left;
-}
+} */
 
 /* Forms */
 

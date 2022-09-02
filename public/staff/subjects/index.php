@@ -15,7 +15,8 @@
       <a class="action" href="<?php echo url_for('/staff/subjects/new.php'); ?>">Create New Subject</a>
     </div>
 
-  	<table id="pages_DT" class="list">
+  	<table id="subjects_table" class="list display dataTable striped-dataTable">
+      <thead>
   	  <tr>
         <th>ID</th>
         <th>Position</th>
@@ -25,7 +26,9 @@
   	    <th>&nbsp;</th>
         <th>&nbsp;</th>
   	  </tr>
+      </thead>
 
+      <tbody>
       <?php while($subject = mysqli_fetch_assoc($subject_set)) { ?>
         <tr>
           <td><?php echo h($subject['id']); ?></td>
@@ -37,6 +40,7 @@
           <td><a class="action" href="<?php echo url_for("/staff/subjects/delete.php?id=" . h(u($subject['id'])) . "&subject=" . h(u($subject['menu_name']))); ?>">Delete</a></td>
     	  </tr>
       <?php } ?>
+      </tbody>
   	</table>
 
     <?php mysqli_free_result($subject_set); ?>
