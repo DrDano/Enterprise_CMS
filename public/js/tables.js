@@ -1,6 +1,7 @@
 $(document).ready(function() {
-    $('#subjects_table').DataTable({
-        order: [[1, 'asc']]
+    $('#datatable').DataTable({
+        order: [[1, 'asc']],
+        responsive: true,
     });
 });
 

@@ -1,3 +1,9 @@
+:root {
+  --header-bg-dark: #112c30;
+  --header-bg-light: #2d7d88;
+  --card-bg-color: #f5f5fa;
+}
+
 html {
   height: 100%;
   width: 100%;
@@ -8,14 +14,20 @@ body {
   width: 100%;
   margin: 0;
   padding: 0;
+  /* background-color: #f1f2f8fb; */
+  background-image: linear-gradient(to top left, rgb(255, 255, 255), rgb(253, 253, 254), rgb(251, 251, 252), rgb(249, 249, 252), rgb(247, 247, 252), rgb(245, 245, 251), rgb(242, 242, 251), rgb(240, 240, 250), rgb(238, 238, 250), rgb(236, 236, 249), rgb(234, 234, 249), rgb(232, 232, 250));
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 header {
+  display: flex;
+  justify-content: center;
   width: 100%;
   height:fit-content;
   margin: 0 0 10px 0;
   padding: 0;
-  background: #0055DD;
+  background: var(--header-bg-dark);
   color: white;
 }
 
@@ -48,8 +60,44 @@ navigation ul li {
 
 #content {
   width: 100vw;
-  height: 100%;
+  height: 89%;
   padding: 0 30px;
+}
+
+.card {
+  display: flex;
+  width: 80%;
+  padding: 30px;
+  margin: 20px;
+  background-color: #f5f5fa;
+  border: 2px #f7f7fa;
+  box-shadow: 14px 14px 18px #d1d4d6, -14px -14px 20px #fff;
+  border-radius: 10px;
+  transition: 0.5s;
+}
+
+a {
+  text-decoration: none;
+  color: #50617d;
+  font-weight: bold;
+}
+
+input[type=text], input[type=search] {
+  background-color: #f7f7fa;
+  margin-right: 8;
+  box-shadow: inset -5px -5px 10px #FFF, inset 2px 2px 5px #dadbe3;
+  width: 100%;
+  box-sizing: border-box;
+  transition: all 0.2s ease-in-out;
+  appearance: none;
+  -webkit-appearance: none;
+  border: none !important;
+  outline: none;
+}
+
+form input[type=text]:focus, input[type=search]:focus {
+  background-color: #f7f7fa;
+  box-shadow: inset -1px -1px 2px #FFF, inset 1px 1px 2px #dadbe3;
 }
 
 footer {
@@ -57,7 +105,7 @@ footer {
   height: fit-content;
   margin: 0 0 10px 0;
   padding: 10px 20px;
-  background: #0055DD;
+  background: #0b1e21;
   color: white;
 }
 
@@ -66,29 +114,6 @@ footer {
 .actions {
   margin-bottom: 1em;
 }
-
-
-/* Lists */
-
-table {
-  border-collapse: collapse;
-  vertical-align: top;
-}
-
-/* table.list {
-  width: 100%;
-}
-
-table.list tr td {
-  border: 1px solid #999999;
-}
-
-table.list tr th {
-  border: 1px solid #0055DD;
-  background: #0055DD;
-  color: white;
-  text-align: left;
-} */
 
 /* Forms */
 
