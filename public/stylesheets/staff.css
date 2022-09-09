@@ -1,7 +1,9 @@
 :root {
+  --body-bg-light: #f1f2f8fb;
   --header-bg-dark: #112c30;
   --header-bg-light: #2d7d88;
-  --card-bg-color: #f5f5fa;
+  --card-bg-color: #e5e7f0fb;
+  --button-active-shadow: #d8d9e4fb;
 }
 
 html {
@@ -14,10 +16,50 @@ body {
   width: 100%;
   margin: 0;
   padding: 0;
-  /* background-color: #f1f2f8fb; */
-  background-image: linear-gradient(to top left, rgb(255, 255, 255), rgb(253, 253, 254), rgb(251, 251, 252), rgb(249, 249, 252), rgb(247, 247, 252), rgb(245, 245, 251), rgb(242, 242, 251), rgb(240, 240, 250), rgb(238, 238, 250), rgb(236, 236, 249), rgb(234, 234, 249), rgb(232, 232, 250));
+  background-color: #f1f2f8fb;
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+h2 {
+  padding: 10px;
+  text-shadow: 0 1px 0 black;
+}
+
+.bg-wrap {
+  position: absolute;
+  overflow: hidden;
+  width: 100%;
+  height: 99%;
+  padding: 0;
+  margin: 0;
+  
+}
+
+.bg-img {
+  background-image: url('../images/bg_img.JPG');
+  background-size: cover;
+  overflow: hidden;
+  opacity: 0.2;
+  width: 100%;
+  height: 100%;
+  box-shadow: 0 0 20px 10px white inset;
+}
+
+.nav-link {
+  padding: 10px;
+  margin: 20px;
+  width: fit-content;
+  background-color: var(--body-bg-light);
+  outline: none;
+  border: none;
+  box-shadow: 2px 2px 10px 5px var(--card-bg-color), -2px -2px 10px 5px #fff;
+  border-radius: 10px;
+  transition: 0.6s ease-in-out;
+}
+
+.nav-link:hover {
+  box-shadow: 4px 4px 10px 3px var(--button-active-shadow), -3px -3px 10px 7px #fff;
 }
 
 header {
@@ -40,7 +82,7 @@ header h1 {
 }
 
 navigation {
-  width: 980px;
+  width: 100%;
   margin: 0;
   padding: 0;
   text-align: center;
@@ -59,8 +101,8 @@ navigation ul li {
 }
 
 #content {
-  width: 100vw;
-  height: 89%;
+  width: 100%;
+  height: 100%;
   padding: 0 30px;
 }
 
@@ -68,10 +110,10 @@ navigation ul li {
   display: flex;
   width: 80%;
   padding: 30px;
-  margin: 20px;
+  margin: 45px;
   background-color: #f5f5fa;
   border: 2px #f7f7fa;
-  box-shadow: 14px 14px 18px #d1d4d6, -14px -14px 20px #fff;
+  box-shadow: 8px 8px 12px 2px var(--card-bg-color), -6px -7px 14px 8px white;
   border-radius: 10px;
   transition: 0.5s;
 }

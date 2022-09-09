@@ -2,31 +2,25 @@
 
 <?php $page_title = 'Staff Menu'; ?>
 <?php include(SHARED_PATH . '/staff_header.php'); ?>
+<div id="content">
+   <div class="bg-wrap">
 
-   <div id="content">
-      <div>
+      <div style="display:flex; flex-direction:row; padding:0 0 0 5%;">
+
          <style>
-            body {
-               height: 95%;
-               overflow: hidden;
-            }
-            footer {
-               text-align:end;
+            #content {
+               padding: 0;
+               margin: 0;
             }
          </style>
          <h2>Main Menu</h2>
-         <ul>
-            <li><a href="<?php echo url_for('staff/pages/index.php'); ?>" >Pages</a></li>
-            <li><a href="<?php echo url_for('staff/subjects/index.php'); ?>">Subjects</a></li>
-         </ul>
-         <div class="ripple-background">
-            <div class="circle xxlarge shade1"></div>
-            <div class="circle xlarge shade2"></div>
-            <div class="circle large shade3"></div>
-            <div class="circle medium shade4"></div>
-            <div class="circle small shade5"></div>
-         </div>
+
+            <div class="nav-link"><a style="padding:0 10px 0 10px;" href="<?php echo url_for('staff/pages/index.php'); ?>">Pages</a></div>
+            <div class="nav-link"><a style="padding:0 10px 0 10px;" href="<?php echo url_for('staff/subjects/index.php'); ?>">Subjects</a></div>
       </div>
+
+      <div class="bg-img" alt="background image"></div>
    </div>
+</div>
 
 <?php include(SHARED_PATH . '/staff_footer.php'); ?>

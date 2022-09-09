@@ -11,7 +11,7 @@
   <div class="subjects listing">
     <h1>Subjects</h1>
 
-    <div class="actions">
+    <div class="nav-link">
       <a class="action" href="<?php echo url_for('/staff/subjects/new.php'); ?>">Create New Subject</a>
     </div>
       <div class="card" name="table-container">
