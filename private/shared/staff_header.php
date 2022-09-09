@@ -11,6 +11,7 @@
    <link rel="stylesheet" media="all" href="<?php echo url_for('/stylesheets/link-flip-anim.css'); ?>">
    <link rel="stylesheet" media="all" href="<?php echo url_for('/stylesheets/link-underline-anim.css'); ?>">
    <link rel="stylesheet" media="all" href="<?php echo url_for('/stylesheets/anim-background.css'); ?>">
+   <link rel="stylesheet" media="all" href="<?php echo url_for('/stylesheets/tables.css'); ?>">
    <link rel="stylesheet" media="all" href="<?php echo url_for('/stylesheets/staff.css'); ?>">
    <title>GBI - <?php echo h($page_title) ?? ''; ?></title>
 </head>
